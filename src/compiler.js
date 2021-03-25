@@ -18,7 +18,7 @@ class CompilerTest1 extends React.Component{
             return(
                 <div>
                     FORM GOES HERE!    
-                    <FileForm onSubmit={this.receiveFile} />
+                    <FileForm onSubmitFile={this.receiveFile} />
                 </div>
             )    
         }
@@ -33,9 +33,14 @@ class CompilerTest1 extends React.Component{
     }
 
     receiveFile = (event)=>{
-        this.setState({
-            textfile : event.target.value
-        })
+        
+        const reader = new FileReader()
+        reader.onload = async (event) =>{
+            const text = (event.target.result) ; 
+            console.log(text) ; 
+            alert(text) ; 
+        } ; 
+        reader.readAsText(event.target.files[0])
     }
 
 }

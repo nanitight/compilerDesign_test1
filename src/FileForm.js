@@ -16,7 +16,7 @@ class FileForm extends React.Component{
     submitFile = (event) =>{
         event.preventDefault() ;
         
-        this.props.onSubmit(this.state.textfile)
+        this.props.onSubmitFile(this.state.textfile)
     }
 
     updateFileEntered = (event) =>{

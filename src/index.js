@@ -11,7 +11,8 @@ import reportWebVitals from './reportWebVitals';
 
 // import Clock from './Clock' ;
 // import Todo from './todo' ;
-import Exchange from './exchange' ;
+// import Exchange from './exchange' ;
+import Compiler from './compiler' ;
 
 // class Count extends React.Component {
 
@@ -58,7 +59,7 @@ import Exchange from './exchange' ;
 // const elem = <Converter />;
 // const count = <Count /> ;
 ReactDOM.render(  
-  <Exchange /> ,
+  <Compiler /> ,
   document.getElementById('root')
 );
 

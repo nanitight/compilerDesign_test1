@@ -1,4 +1,5 @@
 import React from 'react' ;
+import './FileForm' ;
 
 class CompilerTest1 extends React.Component{
 
@@ -6,16 +7,35 @@ class CompilerTest1 extends React.Component{
         super(props) ; 
 
         this.state = {
-            textfile : ""
+            textfile : "",
+            submitted:false 
         }
     }
 
     render(){
-        return(
-            <div>
-                FORM GOES HERE!    
-            </div>
-        )
+
+        if (!this.state.submitted){ //do not showw
+            return(
+                <div>
+                    FORM GOES HERE!    
+                    <FileForm onSubmit={this.receiveFile} />
+                </div>
+            )    
+        }
+        else{
+            return (
+                <div>
+                    TEXTFILE UNDER PROCESSING
+                </div>
+            )
+        }
+        
+    }
+
+    receiveFile = (event)=>{
+        this.setState({
+            textfile : event.target.value
+        })
     }
 
 }

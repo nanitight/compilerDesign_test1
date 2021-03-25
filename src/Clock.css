@@ -1,0 +1,13 @@
+.Clock {
+    text-align:center;
+    font-size: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 1px;
+}
+
+.Time{
+    background-color: #282c34;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}

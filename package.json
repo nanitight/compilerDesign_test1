@@ -1,0 +1,22 @@
+{
+  "name": "compiler_design_test1",
+  "version": "1.0.0",
+  "description": "A simple server test for receiveing a file and manipulating it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanitight/compilerDesign_test1.git"
+  },
+  "keywords": [
+    "compiler"
+  ],
+  "author": "Godiragetse Naane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nanitight/compilerDesign_test1/issues"
+  },
+  "homepage": "https://github.com/nanitight/compilerDesign_test1#readme"
+}

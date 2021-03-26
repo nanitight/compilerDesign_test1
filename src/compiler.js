@@ -1,5 +1,5 @@
 import React from 'react' ;
-import './FileForm' ;
+import FileForm from './FileForm' ;
 
 class CompilerTest1 extends React.Component{
 
@@ -7,7 +7,7 @@ class CompilerTest1 extends React.Component{
         super(props) ; 
 
         this.state = {
-            textfile : "",
+            textFromFile : "",
             submitted:false 
         }
     }
@@ -18,30 +18,33 @@ class CompilerTest1 extends React.Component{
             return(
                 <div>
                     FORM GOES HERE!    
-                    <FileForm onSubmitFile={this.receiveFile} />
+                    <FileForm onSubmitFile={this.receiveTextFromFile} />
                 </div>
             )    
         }
         else{
             return (
                 <div>
-                    TEXTFILE UNDER PROCESSING
+                    <p style={{font:'64em'}} >
+                        {
+                            this.state.textFromFile
+                        }
+                    </p>
                 </div>
             )
         }
         
     }
 
-    receiveFile = (event)=>{
-        
-        const reader = new FileReader()
-        reader.onload = async (event) =>{
-            const text = (event.target.result) ; 
-            console.log(text) ; 
-            alert(text) ; 
-        } ; 
-        reader.readAsText(event.target.files[0])
-    }
+    receiveTextFromFile = (text)=>{
+        this.setState({
+                submitted:!this.state.submitted,
+                textFromFile:text
+            }) ;
+
+        }
+
+
 
 }
 

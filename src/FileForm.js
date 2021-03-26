@@ -1,28 +1,41 @@
 import React from 'react' ;
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class FileForm extends React.Component{
 
 
     constructor(props){
         super(props) ; 
-
         this.state = {
-            textfile : ""
+            textFromFile : ""
         }
     }
 
 
     submitFile = (event) =>{
-        event.preventDefault() ;
-        
-        this.props.onSubmitFile(this.state.textfile)
+        event.preventDefault() ; 
+        this.props.onSubmitFile(this.state.textFromFile) ; 
     }
 
     updateFileEntered = (event) =>{
-        this.setState({
-            textfile : event.target.value 
-        }) ; 
+        event.preventDefault() ;
+        const reader = new FileReader()
+        reader.onload = async (event) =>{
+            const text = (event.target.result) ; 
+            //validation should  entero here
+            if (text.length>0){
+                console.log(text) ; 
+            }
+            else{
+                alert('empty text file submitted, reload to try again- because empty I/O') ;
+            }
+
+            this.setState({
+                textFromFile : text
+            }) ; 
+        } ; 
+        reader.readAsText(event.target.files[0]) ;
+
     }
 
     render(){
@@ -30,21 +43,26 @@ class FileForm extends React.Component{
             <form onSubmit={this.submitFile}>
                 <input type="file"
                 onChange={this.updateFileEntered}
-                id="myFile"
                 name="filename"
+                id="textfile"
+                accept=".txt"
+                
                 />
-                <input type="submit">upload</input>
+                <input type="submit"/>
             </form>
         )
     }
 
 }
 
-FileForm.PropTypes={
-    onSubmit : PropTypes.func.isRequired ,
+
+FileForm.propTypes={
+    onSubmitFile : propTypes.func.isRequired ,
 }
 
 FileForm.defaultProps ={
-    onSubmit : ()=>{},
+    onSubmitFile : ()=>{},
  
 }
+
+export default FileForm ;

@@ -17,7 +17,7 @@ class CompilerTest1 extends React.Component{
         if (!this.state.submitted){ //do not showw
             return(
                 <div>
-                    FORM GOES HERE!    
+                    <lable> Select file from device </lable>
                     <FileForm onSubmitFile={this.receiveTextFromFile} />
                 </div>
             )    

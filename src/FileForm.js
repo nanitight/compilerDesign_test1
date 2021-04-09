@@ -1,40 +1,33 @@
 import React from 'react' ;
 import propTypes from 'prop-types';
+// const fs = require(fs) ;
 
 class FileForm extends React.Component{
-
 
     constructor(props){
         super(props) ; 
         this.state = {
-            textFromFile : ""
+            textFromFile : '',
+            fileChosen : null
         }
     }
 
-
     submitFile = (event) =>{
+        // this.setFileEntered(event) ;
         event.preventDefault() ; 
         this.props.onSubmitFile(this.state.textFromFile) ; 
+        // NqBVXqo7YtgGpURD1bM0c82qM5tSGN
     }
 
     updateFileEntered = (event) =>{
-        event.preventDefault() ;
-        const reader = new FileReader()
-        reader.onload = async (event) =>{
-            const text = (event.target.result) ; 
-            //validation should  entero here
-            if (text.length>0){
-                console.log(text) ; 
-            }
-            else{
-                alert('empty text file submitted, reload to try again- because empty I/O') ;
-            }
-
+        var fr = new FileReader();
+        fr.onload = async ()=>{
             this.setState({
-                textFromFile : text
-            }) ; 
-        } ; 
-        reader.readAsText(event.target.files[0]) ;
+                textFromFile:fr.result 
+            }) ;
+        }
+
+        fr.readAsText(event.target.files[0],'utf8')
 
     }
 
